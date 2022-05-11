@@ -1,0 +1,58 @@
+No,MVP,Questions,Answers
+7,x,What happens to my data?,"juli users collect a vast amount of accurate physiological, behavioral and psychological data. We use aggregated or de-identified health data that no longer identifies a particular user (and is thus no longer considered personal data) to help answer important questions about health status, chronic condition symptoms, health improvements and helps us to find improvements to a user’s wellbeing. "
+9,x,What about data privacy?,"Our mission at juli is to use data and artificial intelligence to guide and empower people with chronic conditions to get better and stay well.  Your privacy and the security of your data are extremely important to us. To be transparent, we want you to understand how we use, collect and share your personal and health data, and how we design all our products to protect them because your data belongs to you. You can find more detailed information in our full Privacy Policy."
+20,x,Do you recommend a device to use with juli?,"juli uses the data collected by your iPhone. The more data is available, from any iPhone compatible device (Fitbit, Apple Watch, smart scale, etc), the more likely juli is to help identify patterns and associations."
+31,x,What is Heart Rate Variability?,"Heart Rate Variability is how much the time between your heartbeat changes. A high HRV indicates your body is relaxed and resilient, while a low HRV indicates you are under stress."
+36,x,Why doesn't juli give me any recommendations how to improve?,"Health is complicated, and so we need enough data on you to be able to make recommendations specific to you. We are working on our machine learning system to work with less data to customize recommendations, stay tuned. "
+37,x,What could I do to improve my asthma?,"Taking your preventive medication as directed is the most important element to control your asthma. In addition, pay attention to the factors that influence your asthma (like pollen) regularly and take steps to minimize the impact if that factor is high. For example, if your asthma is pollen-induced, check the pollen prediction and act accordingly: i.e. wash your clothing and your hair frequently. Check juli to find more correlations."
+44,x,Is there anything I need to worry about today?,Most people with asthma should focus on pollen and air pollution. Check the juli dashboard to see today's levels. 
+45,x,Should I see a doctor?,"If you are having specific symptoms that indicate a severe attack, like severe breathlessness or wheezing, especially at night or in the early morning, the inability to speak more than short phrases due to shortness of breath, or having to strain your chest muscles to breathe you should seek medical attention right away. But if that's not happening, I use the Asthma Control Test to regularly assess your condition.  You can check your last answers if you click in the dashboard on ""asthma"" and scroll down a bit. If your score is less than 20, your asthma is considered not well controlled, and if it's less than 15, it's considered poorly controlled. If your asthma is not well controlled, you should make an appointment and share the results of the Asthma Control Test with him or her. "
+52,x,What can I do to sleep better?,"If your sleep problems are asthma-induced you will want to minimize allergens and pollutants in your bedroom: Take a shower and wash your hair before you go to bed and change your beddings frequently, do not sleep with an open window, and consider a quality air filter in your bedroom. Taking your preventive medication will also help. "
+55,x,Can you tell me an asthma joke?,https://laffgaff.com/asthma-jokes-puns/
+1,,Is juli a real person?,"No, but there is a team of dedicated specialists behind juli: doctors, scientists and data engineers."
+2,,"Why do you refer to juli as ""she""?",We like to think of juli as a caring person and that feels more female to us.
+3,,Where does the name juli come from?,"It is an abbreviation for ""just using lots of information"". "
+4,,Can I talk to someone at juli?,Right now we don't offer a live chat. We recommend that you consult your doctor.
+5,,"What does ""your health assistant"" mean?",
+6,,Is there a real medical team behind juli?,"Yes, there is. We have a team of doctors and medical advisors"
+8,,Where is my data stored?,
+10,,Do juli employees have access to my data?,
+11,,Does juli sell my data?,
+12,,Where does juli get my data from?,
+13,,How do I connect juli to my apple health section?,
+14,,How do I connect my fitbit/ Garmin / Whoop /Oura/ Withing scale to juli?,
+15,,How do I connect my Strava data to juli?,
+16,,How do I get my menstrual data to juli?,
+17,,How to I get O2 Saturation data?,
+18,,How do I get Peak Flow data?,
+19,,How do I connect app XYZ to juli?,
+21,,Do I need to have an Apple watch to use juli?,
+22,,Does juli work with iPhone only?,
+23,,Do you intend to make an android version?,
+24,,Where does juli get the weather data from?,
+25,,Where does juli get the air pollution data from?,
+26,,Where does juli get the pollen data from?,
+27,,"Why doesn't juli show pollen data for specific species like ""Hazel""?",
+28,,"The weather /air pollution / pollen situation at my place is not what it shows in juli, why?",
+29,,Where does juli get my sleep data from?,
+30,,"My sleep data is incorrect, why?",
+32,,Where do you get the assessment of my data from?,
+33,,Why does juli track all that data?,
+34,,What does the correlation graph mean?,
+35,,What conclusions should I draw from my data?,
+38,,What other medication could I use for my asthma?,
+39,,Why don't you give any recommendation for medication?,
+40,,Should I use my emergency inhaler more?,
+41,,Should I use my preventive inhaler more?,
+42,,Why is it important whether I woke up at night due to an episode?,
+43,,Are there factors that drive my asthma that I need to be aware of?,
+46,,Can you recommend a doctor?,
+47,,Can you remind me to take my medication?,. 
+48,,What is the weather like today?,
+49,,What is the pollen like today?,
+50,,Can I track other conditions with juli as well?,
+51,,Can I go for a run or excercise today?,
+53,,What food should I avoid?,
+54,,What's your favorite color,
+56,,Where are my car keys,
+57,,Can you stop asking me so many questions?,
