@@ -58,9 +58,5 @@ def answer_gpt3(incoming_msg):
     return answer
 
 
-while True:
-    msg = input(f'Enter your question below: \n')
-    answer_gpt3(msg)
-
 # answer_returned = answer_gpt3("Where is China?")
 # print(answer_returned)
