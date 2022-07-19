@@ -7,6 +7,7 @@ from NER_POS import pos_tagging
 from fa_chat_close import genResults
 from fa_chat_close import getBertAnswer
 from gpt3 import answer_gpt3
+from outdoor_activity import get_question_type, current_response
 
 logging.basicConfig(level=logging.INFO,
                     format='%(levelname)s:[%(filename)s:%(lineno)d] - %(message)s [%(asctime)s]',
@@ -21,8 +22,12 @@ noun_list_final, verb_list_final, verb_noun_rel_dict, verb_token_list, noun_toke
 
 
 def user_input(inp):
-    answer, score = genResults(inp, getBertAnswer)
+    activity_type = get_question_type(inp[0])
+    if activity_type == 'current time':
+        return current_response()
 
+    # answer, score = genResults(inp, getBertAnswer)
+    score = 0.5
     if score > 0.65:
         LOGGER.info(f'The user query score is above the threshold of 0.65, so returning answer from the in-domain'
                     f'model for this user query')
@@ -42,7 +47,7 @@ def user_input(inp):
         LOGGER.debug(f'The pos dict for the user is {pos_dict}')
         keysList = list(pos_dict.keys())
         LOGGER.debug(f'Distinct POS tags for the user query are {keysList}')
-
+# todo: remove special characters from the user query, and retrain the pickle files
         count_noun = 0
         count_noun_match = 0
         count_verb = 0

@@ -28,7 +28,7 @@ chat_log += default_session_prompt
 def ask(question, chat_log=None):
     prompt_text = f'{chat_log}{restart_sequence}: {question}{start_sequence}:'
     response = openai.Completion.create(
-        model="text-davinci-002",
+        model="text-curie-001",
         prompt=prompt_text,
         temperature=0.7,
         max_tokens=256,
@@ -37,13 +37,13 @@ def ask(question, chat_log=None):
         presence_penalty=0,
         stop=["\n"]
     )
+    print(response)
+    completion_token = response['usage']['total_tokens']
     story = response['choices'][0]['text']
     return str(story)
 
 
 def append_interaction_to_chat_log(question, answer, chat_log):
-    if chat_log is None:
-        chat_log = default_session_prompt
     return f'{chat_log}{restart_sequence} {question}{start_sequence}{answer}'
 
 
@@ -51,10 +51,9 @@ def answer_gpt3(incoming_msg):
     global chat_log
     answer = ask(incoming_msg, chat_log)
     # session['chat_log'] = append_interaction_to_chat_log(incoming_msg, answer,chat_log)
-    chat_log = append_interaction_to_chat_log(incoming_msg, answer, chat_log)
-    # LOGGER.info(f'The chat log is {chat_log}')
-    print(chat_log, "#"*10)
-    print(answer)
+    # chat_log += incoming_msg[0] + answer
+    LOGGER.info(f'The chat log is {chat_log}')
+    LOGGER.info(f'The answer is {answer}')
     return answer
 
 
