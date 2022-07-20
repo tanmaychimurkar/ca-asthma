@@ -82,25 +82,27 @@ def user_input(inp):
 
         LOGGER.debug(f'Checking if the user query has the verb noun pair present in the master verb-noun list')
         if count_verb_percent >= 0.5 and count_noun_percent >= 0.5:
-            temp_verb = ''
-            temp_noun = ''
+            temp_verb_list = []
+            temp_noun_list = []
             for item in tokens_tag:
                 if item[1] in verb_token_list:
-                    temp_verb = wordnet_lemmatizer.lemmatize(item[0].lower()) # todo: add append instead of replace in the tempverb and tempnoun pair
-                    LOGGER.debug(f'The temp verb is {temp_verb}')
+                    temp_verb_list.append(wordnet_lemmatizer.lemmatize(item[0].lower())) # todo: add append instead of replace in the tempverb and tempnoun pair
+                    LOGGER.debug(f'The temp verb is {temp_verb_list}')
 
                 if item[1] in noun_token_list:
-                    temp_noun = wordnet_lemmatizer.lemmatize(item[0].lower())
-                    LOGGER.debug(f'The temp noun is {temp_noun}')
+                    temp_noun_list.append(wordnet_lemmatizer.lemmatize(item[0].lower()))
+                    LOGGER.debug(f'The temp noun is {temp_noun_list}')
 
-                    if temp_verb in verb_noun_rel_dict.keys():
-                        temp_noun_list = verb_noun_rel_dict.get(temp_verb) # todo: add append instead of replace in the tempverb and tempnoun pair
-                        if temp_noun in temp_noun_list:
-                            LOGGER.info(f'Getting the answer from the gpt3 API')
-                            answer_returned = answer_gpt3(inp)
-                            return answer_returned
-                        else:
-                            return f'Hey there. Sorry, I can\'t quite answer that.'
+                    for temp_verb in temp_verb_list:
+                        for temp_noun in temp_noun_list:
+                            if temp_verb in verb_noun_rel_dict.keys():
+                                temp_noun_list = verb_noun_rel_dict.get(temp_verb) # todo: add append instead of replace in the tempverb and tempnoun pair
+                                if temp_noun in temp_noun_list:
+                                    LOGGER.info(f'Getting the answer from the gpt3 API')
+                                    answer_returned = answer_gpt3(inp)
+                                    return answer_returned
+                                else:
+                                    return f'Hey there. Sorry, I can\'t quite answer that.'
 
         else:
             LOGGER.info(f'The user query matches neither the in-domain nor the out-domain model criteria to fetch an'
