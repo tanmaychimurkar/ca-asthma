@@ -1,5 +1,7 @@
 import json
+import string
 from flask import Flask, request
+
 from In_out_DomainClassification import user_input
 
 app = Flask(__name__)
@@ -15,8 +17,9 @@ def get_gpt3_answer():
     record = json.loads(request.data)
     print(record['answer']['question'])
     inp = [record['answer']['question']]
+    inp = inp.translate(str.maketrans('', '', string.punctuation))
     answer_returned = user_input(inp)
-    print(answer_returned)
+    print(answer_returned, "^"*50)
     return answer_returned, 200
 
 

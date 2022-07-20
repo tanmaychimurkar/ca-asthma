@@ -26,8 +26,7 @@ def user_input(inp):
     if activity_type == 'current time':
         return current_response()
 
-    # answer, score = genResults(inp, getBertAnswer)
-    score = 0.5
+    answer, score = genResults(inp, getBertAnswer)
     if score > 0.65:
         LOGGER.info(f'The user query score is above the threshold of 0.65, so returning answer from the in-domain'
                     f'model for this user query')
@@ -87,7 +86,7 @@ def user_input(inp):
             temp_noun = ''
             for item in tokens_tag:
                 if item[1] in verb_token_list:
-                    temp_verb = wordnet_lemmatizer.lemmatize(item[0].lower())
+                    temp_verb = wordnet_lemmatizer.lemmatize(item[0].lower()) # todo: add append instead of replace in the tempverb and tempnoun pair
                     LOGGER.debug(f'The temp verb is {temp_verb}')
 
                 if item[1] in noun_token_list:
@@ -95,11 +94,13 @@ def user_input(inp):
                     LOGGER.debug(f'The temp noun is {temp_noun}')
 
                     if temp_verb in verb_noun_rel_dict.keys():
-                        temp_noun_list = verb_noun_rel_dict.get(temp_verb)
+                        temp_noun_list = verb_noun_rel_dict.get(temp_verb) # todo: add append instead of replace in the tempverb and tempnoun pair
                         if temp_noun in temp_noun_list:
                             LOGGER.info(f'Getting the answer from the gpt3 API')
                             answer_returned = answer_gpt3(inp)
                             return answer_returned
+                        else:
+                            return f'Hey there. Sorry, I can\'t quite answer that.'
 
         else:
             LOGGER.info(f'The user query matches neither the in-domain nor the out-domain model criteria to fetch an'

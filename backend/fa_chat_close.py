@@ -11,11 +11,10 @@ LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.INFO)
 
 model = SentenceTransformer('all-mpnet-base-v2')
-question_embedding = np.load("model_objects/questions.npy")
+question_embedding = np.load("model_objects/question_emb.npy")
 question_embedding_length = np.load("model_objects/question_len_embedding.npy")
 
 data = pd.read_csv('fe_chat.csv')
-LOGGER.info(data.shape, '$$$$$$$$$$$$$')
 data.fillna('placeholder for answers', inplace=True)
 LOGGER.debug(f'Successfully loaded all model and data objects')
 
@@ -40,14 +39,13 @@ def genResults(questions, fn):
 #     print("Questions count", len(questions))
 #     print("Start to calculate encoder....")
 #     questions_encoder = bc.encode(questions)
-#     np.save("question_emb", questions_encoder)
+#     np.save("v2tanmay_question_emb", questions_encoder)
 #     questions_encoder_len = np.sqrt(
 #         np.sum(questions_encoder * questions_encoder, axis=1)
 #     )
-#     np.save("question_len_embedding", questions_encoder_len)
+#     np.save("v2tanmay_question_len_embedding", questions_encoder_len)
+#     return questions_encoder, questions_encoder_len
 #     print("Encoder ready")
-
-# encode_questions()
 
 
 class BertAnswer:
@@ -72,6 +70,5 @@ bm = BertAnswer()
 
 def getBertAnswer(q):
     return bm.get(q)
-
 
 # genResults('Who is Juli?', getBertAnswer)

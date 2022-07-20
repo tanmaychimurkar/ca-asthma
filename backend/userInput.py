@@ -1,6 +1,6 @@
 import logging
 import sys
-
+import string
 from In_out_DomainClassification import user_input
 
 logging.basicConfig(level=logging.INFO,
@@ -19,6 +19,7 @@ while True:
         LOGGER.info(f'User session terminated')
         break
 
+    user_query = user_query.translate(str.maketrans('', '', string.punctuation))
     inp = [user_query]
     LOGGER.info(f'User did not exit, pipeline invoked')
 

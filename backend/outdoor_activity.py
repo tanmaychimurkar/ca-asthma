@@ -28,7 +28,6 @@ def get_question_type(question):
     zero_shot_classify = classifier(question, candidate_label_current_time)
 
     # todo: find the optimal parameter for this by experimentation
-    print(zero_shot_classify['labels'])
     activity_type = zero_shot_classify['labels'][0]
     return activity_type
 
