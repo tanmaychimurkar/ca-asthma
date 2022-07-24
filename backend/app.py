@@ -19,6 +19,8 @@ def get_gpt3_answer():
     inp = [record['answer']['question']]
     inp = [inp[0].translate(str.maketrans('', '', string.punctuation))]
     answer_returned = user_input(inp)
+    if isinstance(answer_returned, list):
+        answer_returned = answer_returned[0]
     print(answer_returned, "^"*50)
     return answer_returned, 200
 

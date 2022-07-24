@@ -24,6 +24,9 @@ while True:
     LOGGER.info(f'User did not exit, pipeline invoked')
 
     answer_returned = user_input(inp)
+    if isinstance(answer_returned, list):
+        print('this is a list', '$'*40)
+        answer_returned = answer_returned[0]
     LOGGER.info(f'The answer for the user question is: {answer_returned}')
     print(answer_returned)
 
