@@ -30,7 +30,7 @@ while True:
     LOGGER.info(f'The answer for the user question is: {answer_returned}')
     print(answer_returned)
 
-    # append_interaction_to_chat_log(inp1,answer_returned,None)
+    # append_interaction_to_chat_log(input_global,answer_returned,None)
 
 # todo: indexing files for not retrianing, indomain and verb noun pair, weather integration, api for entrypoint,
 #  todo: pipeline 2: default context for all outdomain questions. So verb-noun pair not necessary, but more testing

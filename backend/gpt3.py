@@ -2,8 +2,11 @@ import os
 
 from numpy import promote_types
 import openai
+from dotenv import load_dotenv
 
-openai.api_key = "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"
+load_dotenv()
+
+openai.api_key = os.getenv('openai_api_key')
 completion = openai.Completion()
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 

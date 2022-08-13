@@ -69,7 +69,7 @@ def user_input(inp, model_flag=0):
         count_verb_percent = 0
         if count_noun_match != 0 and count_noun != 0:
             count_noun_percent = count_noun_match / count_noun
-            LOGGER.debug(f'Noun match percent is {count_noun_percent}')
+            LOGGER.info(f'Noun match percent is {count_noun_percent}')
 
         for verbs in verb_list:
             if verbs in verb_list_final:
@@ -80,32 +80,32 @@ def user_input(inp, model_flag=0):
             count_verb_percent = count_verb_match / count_verb
             LOGGER.debug(f'Count verb percent is {count_verb_percent}')
 
-        LOGGER.debug(f'Checking if the user query has the verb noun pair present in the master verb-noun list')
+        LOGGER.info(f'Checking if the user query has the verb noun pair present in the master verb-noun list')
         if count_verb_percent >= 0.5 and count_noun_percent >= 0.5:
             temp_verb_list = []
             temp_noun_list = []
             for item in tokens_tag:
                 if item[1] in verb_token_list:
                     temp_verb_list.append(wordnet_lemmatizer.lemmatize(item[0].lower())) # todo: add append instead of replace in the tempverb and tempnoun pair
-                    LOGGER.debug(f'The temp verb is {temp_verb_list}')
+                    LOGGER.info(f'The temp verb is {temp_verb_list}')
 
                 if item[1] in noun_token_list:
                     temp_noun_list.append(wordnet_lemmatizer.lemmatize(item[0].lower()))
-                    LOGGER.debug(f'The temp noun is {temp_noun_list}')
+                    LOGGER.info(f'The temp noun is {temp_noun_list}')
 
-                    for temp_verb in temp_verb_list:
-                        for temp_noun in temp_noun_list:
-                            if temp_verb in verb_noun_rel_dict.keys():
-                                temp_noun_list = verb_noun_rel_dict.get(temp_verb) # todo: add append instead of replace in the tempverb and tempnoun pair
-                                if temp_noun in temp_noun_list:
-                                    LOGGER.info(f'Getting the answer from the gpt3 API')
-                                    if model_flag == 0:
-                                        answer_returned = answer_gpt3(inp)
-                                    else:
-                                        answer_returned = answer_gpt3(inp, curie_flag=1)
-                                    return answer_returned
-                                else:
-                                    return f'Hey there. Sorry, I can\'t quite answer that.'
+            for temp_verb in temp_verb_list:
+                for temp_noun in temp_noun_list:
+                    if temp_verb in verb_noun_rel_dict.keys():
+                        temp_noun_list = verb_noun_rel_dict.get(temp_verb)
+                        if temp_noun in temp_noun_list:
+                            LOGGER.info(f'Getting the answer from the gpt3 API')
+                            if model_flag == 0:
+                                answer_returned = answer_gpt3(inp)
+                            else:
+                                answer_returned = answer_gpt3(inp, curie_flag=1)
+                            return answer_returned
+
+            return f'Hey there. Sorry, I can\'t quite answer that.'
 
         else:
             LOGGER.info(f'The user query matches neither the in-domain nor the out-domain model criteria to fetch an'
