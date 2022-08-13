@@ -59,7 +59,6 @@ def get_gpt3_answer():
     global answer_global
     global flag
     record = json.loads(request.data)
-    print(record['answer']['question'])
     inp = [record['answer']['question']]
     inp = [inp[0].translate(str.maketrans('', '', string.punctuation))]
     answer_returned = user_input(inp)
@@ -80,6 +79,7 @@ def get_gpt3_answer_curie():
     record = json.loads(request.data)
     print(record['answer']['question'])
     inp = [record['answer']['question']]
+    inp = [inp[0].translate(str.maketrans('', '', string.punctuation))]
     answer_returned = user_input(inp, model_flag=1)
     LOGGER.info(f'Answer returned is {answer_returned}, {type(answer_returned)}')
     if "[" in answer_returned:

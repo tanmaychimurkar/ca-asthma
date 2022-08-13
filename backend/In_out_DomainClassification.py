@@ -99,7 +99,10 @@ def user_input(inp, model_flag=0):
                                 temp_noun_list = verb_noun_rel_dict.get(temp_verb) # todo: add append instead of replace in the tempverb and tempnoun pair
                                 if temp_noun in temp_noun_list:
                                     LOGGER.info(f'Getting the answer from the gpt3 API')
-                                    answer_returned = answer_gpt3(inp)
+                                    if model_flag == 0:
+                                        answer_returned = answer_gpt3(inp)
+                                    else:
+                                        answer_returned = answer_gpt3(inp, curie_flag=1)
                                     return answer_returned
                                 else:
                                     return f'Hey there. Sorry, I can\'t quite answer that.'

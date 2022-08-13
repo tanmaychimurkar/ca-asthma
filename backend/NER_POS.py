@@ -1,11 +1,16 @@
-import pandas as pd
 import pickle
+
+import pandas as pd
+from nltk import pos_tag
+import string
 from nltk.stem import WordNetLemmatizer
+wordnet_lemmatizer = WordNetLemmatizer()
 
 wordnet_lemmatizer = WordNetLemmatizer()
 
 df = pd.read_csv("nerList.csv")
-
+df1 =pd.read_csv("Asthma-QA.csv")
+#
 # pos_dict = {}
 # verb_noun_rel_dict = {}
 verb_token_list = ["VB", "VBG", "VBD", "VBN", "VBP", "VBZ"]
@@ -44,16 +49,31 @@ def find_vn_relation(tokens_tag):
                         temp_list = [temp_noun]
                         verb_noun_rel_dict[temp_verb] = temp_list
 
-
 # for index, row in df.iterrows():
+#     row['selftext'] = row['selftext'].translate(str.maketrans('', '', string.punctuation))
 #     text = row['selftext'].split()
-#     text_lemmatized = [wordnet_lemmatizer.lemmatize(w) for w in text]
-#     tokens_tag = pos_tag(text_lemmatized)
+#     tokens_tag = pos_tag(text)
+#     find_vn_relation(tokens_tag)
+#     pos_tagging(tokens_tag, pos_dict)
+#
+# for index, row in df1.iterrows():
+#     row['Question'] = row['Question'].translate(str.maketrans('', '', string.punctuation))
+#     text = row['Question'].split()
+#     tokens_tag = pos_tag(text)
 #     find_vn_relation(tokens_tag)
 #     pos_tagging(tokens_tag, pos_dict)
 
 
-with open('model_objects/pos_dict.pkl', 'rb') as f:
+# with open('model_objects/pos_dict_new.pkl', 'wb') as f:
+#     # pos_dict = pickle.load(f)
+#     pickle.dump(pos_dict, f)
+#
+# with open('model_objects/verb_noun_relation_dict_new.pkl', 'wb') as f:
+#     pickle.dump(verb_noun_rel_dict, f)
+
+
+
+with open('model_objects/pos_dict_new.pkl', 'rb') as f:
     pos_dict = pickle.load(f)
 
 with open('model_objects/verb_noun_relation_dict.pkl', 'rb') as f:
