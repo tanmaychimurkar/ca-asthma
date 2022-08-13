@@ -21,12 +21,12 @@ wordnet_lemmatizer = WordNetLemmatizer()
 noun_list_final, verb_list_final, verb_noun_rel_dict, verb_token_list, noun_token_list = get_data()
 
 
-def user_input(inp):
+def user_input(inp, model_flag=0):
     activity_type = get_question_type(inp[0])
     if activity_type == 'current time':
         return current_response()
-
     answer, score = genResults(inp, getBertAnswer)
+
     if score > 0.65:
         LOGGER.info(f'The user query score is above the threshold of 0.65, so returning answer from the in-domain'
                     f'model for this user query')
