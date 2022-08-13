@@ -2,7 +2,7 @@ import ast
 import json
 import logging
 import time
-# import psycopg2
+import string
 from flask import Flask, request, g as app_ctx
 from In_out_DomainClassification import user_input
 from flask_pymongo import PyMongo
@@ -61,6 +61,7 @@ def get_gpt3_answer():
     record = json.loads(request.data)
     print(record['answer']['question'])
     inp = [record['answer']['question']]
+    inp = [inp[0].translate(str.maketrans('', '', string.punctuation))]
     answer_returned = user_input(inp)
     LOGGER.info(f'Answer returned is {answer_returned}')
     if "[" in answer_returned:
