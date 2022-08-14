@@ -43,11 +43,11 @@ def logging_after(response):
 
     if flag == 0:
         LOGGER.info(f'Inserting the question-answer and response time in the Davinci collection')
-        # db.davinci_avg.insert_one({'question': input_global[0], 'answer': answer_global, "time": time_in_ms})
+        db.davinci_avg.insert_one({'question': input_global[0], 'answer': answer_global, "time": time_in_ms})
 
     else:
         LOGGER.info(f'Inserting the question-answer and response time in the Curie collection')
-        # db.curie_avg.insert_one({'question': input_global[0], 'answer': answer_global, "time": time_in_ms})
+        db.curie_avg.insert_one({'question': input_global[0], 'answer': answer_global, "time": time_in_ms})
 
     return response
 
