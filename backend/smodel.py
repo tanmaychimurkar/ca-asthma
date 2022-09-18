@@ -1,8 +1,6 @@
-
-
-
 import pandas as pd
-data = pd.read_csv('fe_chat.csv')
+
+data = pd.read_csv("fe_chat.csv")
 # data.drop(columns=['No'], inplace=True)
 data.dropna(inplace=True)
 data
@@ -12,18 +10,23 @@ test_data = [
     "What is the meaning of juli name",
     "Can I speak to someone at juli?",
     "Who is behind juli?",
-    "Who is juli"
+    "Who is juli",
 ]
 
 
 # master fn for getting answers to questions
 
+
 def genResults(questions, fn):
     def genresult(q):
         answer, score, prediction = fn(q)
         return [q, prediction, answer, score]
-    result_df = pd.DataFrame(list(map(genresult, questions)), columns=['question', 'question_closest', 'answer', 'score'])
-    return result_df['answer'].values
+
+    result_df = pd.DataFrame(
+        list(map(genresult, questions)),
+        columns=["question", "question_closest", "answer", "score"],
+    )
+    return result_df["answer"].values
 
 
 # ## Bert QA system
@@ -31,7 +34,8 @@ def genResults(questions, fn):
 
 from sentence_transformers import SentenceTransformer
 import numpy as np
-model = SentenceTransformer('all-MiniLM-L6-v2')
+
+model = SentenceTransformer("all-MiniLM-L6-v2")
 
 # def encode_questions():
 #     bc = model
@@ -49,10 +53,10 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 # encode_questions()
 
 
-
 import numpy as np
 
-class BertAnswer():
+
+class BertAnswer:
     def __init__(self):
         self.bc = model
         self.q_data = data["Questions"].values.tolist()
@@ -71,14 +75,15 @@ class BertAnswer():
         # return "Sorry, I didn't get you.", score[top_id], self.q_data[top_id]
         return self.a_data[top_id], score[top_id], self.q_data[top_id]
 
+
 bm = BertAnswer()
+
 
 def getBertAnswer(q):
     return bm.get(q)
+
 
 genResults([test_data[0]], getBertAnswer)
 
 
 # bert approach and lrvensthein distance method both seem to be good, present results to Andy
-
-

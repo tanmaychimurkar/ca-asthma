@@ -3,20 +3,22 @@ import numpy as np
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 
-logging.basicConfig(level=logging.INFO,
-                    format='%(levelname)s:[%(filename)s:%(lineno)d] - %(message)s [%(asctime)s]',
-                    datefmt='%H:%M:%S')
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(levelname)s:[%(filename)s:%(lineno)d] - %(message)s [%(asctime)s]",
+    datefmt="%H:%M:%S",
+)
 
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.INFO)
 
-model = SentenceTransformer('all-mpnet-base-v2')
+model = SentenceTransformer("all-mpnet-base-v2")
 question_embedding = np.load("model_objects/question_emb.npy")
 question_embedding_length = np.load("model_objects/question_len_embedding.npy")
 
-data = pd.read_csv('fe_chat.csv')
-data.fillna('placeholder for answers', inplace=True)
-LOGGER.debug(f'Successfully loaded all model and data objects')
+data = pd.read_csv("fe_chat.csv")
+data.fillna("placeholder for answers", inplace=True)
+LOGGER.debug(f"Successfully loaded all model and data objects")
 
 
 def genResults(questions, fn):
@@ -24,13 +26,19 @@ def genResults(questions, fn):
         answer, score, prediction = fn(q)
         return [q, prediction, answer, score]
 
-    result_df = pd.DataFrame(list(map(genresult, questions)),
-                             columns=['question', 'question_closest', 'answer', 'score'])
-    LOGGER.debug(f'The score of the closest question to the user query in the in-domain '
-                 f'dataset is {result_df["score"].values[0]}')
-    LOGGER.debug(f'The closest matched question to the user query in the in-domain '
-                 f'dataset is `{result_df["question_closest"].values[0]}`')
-    return result_df['answer'].values[0], result_df['score'].values[0]
+    result_df = pd.DataFrame(
+        list(map(genresult, questions)),
+        columns=["question", "question_closest", "answer", "score"],
+    )
+    LOGGER.debug(
+        f"The score of the closest question to the user query in the in-domain "
+        f'dataset is {result_df["score"].values[0]}'
+    )
+    LOGGER.debug(
+        f"The closest matched question to the user query in the in-domain "
+        f'dataset is `{result_df["question_closest"].values[0]}`'
+    )
+    return result_df["answer"].values[0], result_df["score"].values[0]
 
 
 # def encode_questions():
@@ -59,7 +67,7 @@ class BertAnswer:
     def get(self, q):
         query_vector = self.bc.encode([q])[0]
         score = np.sum((query_vector * self.questions_encoder), axis=1) / (
-                self.questions_encoder_len * (np.sum(query_vector * query_vector) ** 0.5)
+            self.questions_encoder_len * (np.sum(query_vector * query_vector) ** 0.5)
         )
         top_id = np.argsort(score)[::-1][0]
         return self.a_data[top_id], score[top_id], self.q_data[top_id]
@@ -70,5 +78,6 @@ bm = BertAnswer()
 
 def getBertAnswer(q):
     return bm.get(q)
+
 
 # genResults('Who is Juli?', getBertAnswer)
