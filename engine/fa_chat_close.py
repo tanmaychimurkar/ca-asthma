@@ -1,4 +1,5 @@
 import logging
+import os
 import numpy as np
 import pandas as pd
 from sentence_transformers import SentenceTransformer
@@ -12,11 +13,13 @@ logging.basicConfig(
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.INFO)
 
-model = SentenceTransformer("all-mpnet-base-v2")
-question_embedding = np.load("model_objects/question_emb.npy")
-question_embedding_length = np.load("model_objects/question_len_embedding.npy")
+current_path = os.path.dirname(os.path.abspath(__file__))
 
-data = pd.read_csv("fe_chat.csv")
+model = SentenceTransformer("all-mpnet-base-v2")
+question_embedding = np.load(current_path + "/model_checkpoints/question_emb.npy")
+question_embedding_length = np.load(current_path + "/model_checkpoints/question_len_embedding.npy")
+
+data = pd.read_csv(current_path + "/model_checkpoints/fe_chat.csv")
 data.fillna("placeholder for answers", inplace=True)
 LOGGER.debug(f"Successfully loaded all model and data objects")
 

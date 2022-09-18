@@ -1,19 +1,16 @@
 import pickle
 
 import pandas as pd
-from nltk import pos_tag
-import string
 from nltk.stem import WordNetLemmatizer
+import os
 
 wordnet_lemmatizer = WordNetLemmatizer()
 
-wordnet_lemmatizer = WordNetLemmatizer()
+current_path = os.path.dirname(os.path.abspath(__file__))
 
-df = pd.read_csv("nerList.csv")
-df1 = pd.read_csv("Asthma-QA.csv")
-#
-# pos_dict = {}
-# verb_noun_rel_dict = {}
+
+df = pd.read_csv(current_path + "/model_checkpoints/nerList.csv")
+df1 = pd.read_csv(current_path + "/model_checkpoints/Asthma-QA.csv")
 verb_token_list = ["VB", "VBG", "VBD", "VBN", "VBP", "VBZ"]
 noun_token_list = ["NN", "NNS", "NNP", "NNPS"]
 
@@ -74,10 +71,10 @@ def find_vn_relation(tokens_tag):
 #     pickle.dump(verb_noun_rel_dict, f)
 
 
-with open("model_objects/pos_dict_new.pkl", "rb") as f:
+with open(current_path + "/model_checkpoints/pos_dict_new.pkl", "rb") as f:
     pos_dict = pickle.load(f)
 
-with open("model_objects/verb_noun_relation_dict.pkl", "rb") as f:
+with open(current_path + "/model_checkpoints/verb_noun_relation_dict.pkl", "rb") as f:
     verb_noun_rel_dict = pickle.load(f)
 
 noun_list = (
