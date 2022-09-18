@@ -1,15 +1,14 @@
 import logging
 
-
 from nltk import pos_tag
 from nltk.stem import WordNetLemmatizer
 
-from NER_POS import get_data
-from NER_POS import pos_tagging
+from engine.NER_POS import get_data
+from engine.NER_POS import pos_tagging
 from engine.fa_chat_close import genResults
 from engine.fa_chat_close import getBertAnswer
-from gpt3 import answer_gpt3
-from outdoor_activity import get_question_type, current_response
+from engine.gpt3 import answer_gpt3
+from engine.outdoor_activity import get_question_type, current_response
 
 logging.basicConfig(
     level=logging.INFO,

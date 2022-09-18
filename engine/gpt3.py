@@ -1,6 +1,5 @@
 import os
 
-from numpy import promote_types
 import openai
 from dotenv import load_dotenv
 

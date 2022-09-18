@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from transformers import pipeline
 
 load_dotenv()
+current_path = os.path.dirname(os.path.abspath(__file__))
 
 classifier = pipeline(
     "zero-shot-classification", model="facebook/bart-large-mnli"
@@ -16,7 +17,7 @@ candidate_label_current_time = [
     "general question",
 ]  # todo: if general, then only gpt3 output, else gpt3/weather/heartrate
 
-user_mock_data = pd.read_csv("mock_healthcare.csv")
+user_mock_data = pd.read_csv(current_path + "/model_checkpoints/mock_healthcare.csv")
 
 url = "https://api.ambeedata.com/latest/by-city"
 querystring = {"city": "Zurich"}  # location could be changed by Juli
