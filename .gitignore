@@ -3,3 +3,5 @@ checkpoint/
 models/
 
 CA_Asthma.egg-info
+
+/backend/.idea/
