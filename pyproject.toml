@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "casystem"
+version = "0.1.0"
+authors = [
+  { name="Tanmay Chimurkar", email="tanmay.chimurkar@uzh.ch" },
+]
+description = "This is a project that acts as a conversational agent for Asthmatic patients"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/tanmaychimurkar/conversational-agent-for-Asthma"
