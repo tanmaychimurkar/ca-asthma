@@ -16,5 +16,10 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+[tool.setuptools.packages.find]
+where = ["engine"]
+include = ["*"]
+namespaces = false
+
 [project.urls]
 "Homepage" = "https://github.com/tanmaychimurkar/conversational-agent-for-Asthma"
