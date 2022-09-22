@@ -131,6 +131,7 @@ celerybeat.pid
 
 # Environments
 .env
+src/indomain/cache/*
 .venv
 env/
 venv/

@@ -1,9 +1,12 @@
 FROM ubuntu
 
-RUN apt-get update -y && apt-get install -y python3-pip
-RUN apt-get install -y python3.10
+RUN apt-get update -y && apt-get install -y python3-pip && python3.10
+#RUN apt-get install -y python3-pip && apt-get install -y python3.10
 
-ADD /requirements.txt .
+#FROM python:3.9
+#RUN apk update
+#RUN apk add make automake gcc g++ subversion python3-dev
+ADD src/requirements.txt .
 
 RUN pip3 install -r requirements.txt
 

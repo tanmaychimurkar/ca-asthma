@@ -98,5 +98,3 @@ def answer_gpt3(incoming_msg, curie_flag=0):
     if answer == incoming_msg:
         answer_gpt3(incoming_msg, curie_flag)
     return answer
-
-

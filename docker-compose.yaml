@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  backend:
+    image: gaavde44/caasthma
+    container_name: backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - backend:/ca
+
+  mongo:
+    image: mongo
+    container_name: mongodb_local
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-dir:/data/db
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo_express_local
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_PORT: 27017
+
+    depends_on:
+      - mongo
+
+volumes:
+  backend:
+  data-dir:

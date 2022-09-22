@@ -18,8 +18,9 @@ LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.INFO)
 
 app = Flask(__name__)
-mongodb_client = PyMongo(app, uri="mongodb://localhost:27017/juli-chat")
+mongodb_client = PyMongo(app, uri="mongodb://mongo:27017/juli-chat")
 db = mongodb_client.db
+LOGGER.info(f'Db available is {db}')
 time_in_ms = 0
 input_global = ""
 answer_global = ""
