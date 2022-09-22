@@ -3,23 +3,21 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "casystem"
+name = "asthmaca"
 version = "0.1.0"
 authors = [
   { name="Tanmay Chimurkar", email="tanmay.chimurkar@uzh.ch" },
 ]
-description = "This is a project that acts as a conversational agent for Asthmatic patients"
+description = "This is a project that acts as a conversational agent for Asthmatic patients by using sBERT and GTP3"
 requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+[tool.isort]
+profile = 'black'
 
-[tool.setuptools.packages.find]
-where = ["engine"]
-include = ["*"]
-namespaces = false
-
+keywords = ['conversational agent', 'Asthma Chatbot']
 [project.urls]
 "Homepage" = "https://github.com/tanmaychimurkar/conversational-agent-for-Asthma"

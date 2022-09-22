@@ -1,0 +1,3 @@
+include model_checkpoints/*
+exclude backend/*
+include *.py
