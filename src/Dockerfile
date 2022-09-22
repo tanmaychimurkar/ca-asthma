@@ -1,19 +1,17 @@
 FROM ubuntu
 
 RUN apt-get update -y && apt-get install -y python3-pip
-RUN apt-get install -y python3.9
+RUN apt-get install -y python3.10
 
-ADD /engine/requirements.txt /ca/
+ADD /requirements.txt .
 
-RUN pip3 install -r /ca/requirements.txt
+RUN pip3 install -r requirements.txt
 
 COPY . ca/
 
 WORKDIR /ca
 
-RUN ["python3", "setup.py", "install"]
-
-CMD python3 -m nltk.downloader all
+RUN python3 -m nltk.downloader all
 
 EXPOSE 5000
 

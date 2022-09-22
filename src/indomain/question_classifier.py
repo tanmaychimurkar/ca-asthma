@@ -2,6 +2,7 @@ import logging
 
 from nltk import pos_tag
 from nltk.stem import WordNetLemmatizer
+from src.indomain.sbert_model import genResults, getBertAnswer
 from src.outdomain.gpt3_model import answer_gpt3
 from src.outdomain.ner_pos import get_data, pos_tagging
 from src.outdomain.outdoor_activity import get_question_type, current_response
@@ -59,7 +60,6 @@ def user_input(inp, model_flag=0):
         LOGGER.debug(f"The pos dict for the user is {pos_dict}")
         keysList = list(pos_dict.keys())
         LOGGER.debug(f"Distinct POS tags for the user query are {keysList}")
-        # todo: remove special characters from the user query, and retrain the pickle files
         count_noun = 0
         count_noun_match = 0
         count_verb = 0
@@ -82,7 +82,7 @@ def user_input(inp, model_flag=0):
         count_verb_percent = 0
         if count_noun_match != 0 and count_noun != 0:
             count_noun_percent = count_noun_match / count_noun
-            LOGGER.info(f"Noun match percent is {count_noun_percent}")
+            LOGGER.debug(f"Noun match percent is {count_noun_percent}")
 
         for verbs in verb_list:
             if verbs in verb_list_final:
@@ -93,7 +93,7 @@ def user_input(inp, model_flag=0):
             count_verb_percent = count_verb_match / count_verb
             LOGGER.debug(f"Count verb percent is {count_verb_percent}")
 
-        LOGGER.info(
+        LOGGER.debug(
             f"Checking if the user query has the verb noun pair present in the master verb-noun list"
         )
         if count_verb_percent >= 0.5 and count_noun_percent >= 0.5:
@@ -104,11 +104,11 @@ def user_input(inp, model_flag=0):
                     temp_verb_list.append(
                         wordnet_lemmatizer.lemmatize(item[0].lower())
                     )  # todo: add append instead of replace in the tempverb and tempnoun pair
-                    LOGGER.info(f"The temp verb is {temp_verb_list}")
+                    LOGGER.debug(f"The temp verb is {temp_verb_list}")
 
                 if item[1] in noun_token_list:
                     temp_noun_list.append(wordnet_lemmatizer.lemmatize(item[0].lower()))
-                    LOGGER.info(f"The temp noun is {temp_noun_list}")
+                    LOGGER.debug(f"The temp noun is {temp_noun_list}")
 
             for temp_verb in temp_verb_list:
                 for temp_noun in temp_noun_list:

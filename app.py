@@ -6,7 +6,6 @@ import time
 from flask import Flask, request, g as app_ctx
 from flask_pymongo import PyMongo
 
-# from src.In_out_DomainClassification import user_input
 from src.indomain.question_classifier import user_input
 
 logging.basicConfig(
@@ -25,6 +24,8 @@ time_in_ms = 0
 input_global = ""
 answer_global = ""
 flag = 0
+
+LOGGER.info(f'Ready to listen for request \n')
 
 
 @app.route("/")
@@ -72,7 +73,7 @@ def get_gpt3_answer():
     global answer_global
     global flag
     record = json.loads(request.data)
-    inp = [record["answer"]["question"]]
+    inp = [record["question"]]
     LOGGER.info(f"The original input is {inp}")
     inp = [inp[0].translate(str.maketrans("", "", string.punctuation))]
     LOGGER.info(f"The cleaned input is {inp}")
@@ -92,8 +93,7 @@ def get_gpt3_answer_curie():
     global answer_global
     global flag
     record = json.loads(request.data)
-    print(record["answer"]["question"])
-    inp = [record["answer"]["question"]]
+    inp = [record["question"]]
     LOGGER.info(f"The original input is {inp}")
     inp = [inp[0].translate(str.maketrans("", "", string.punctuation))]
     LOGGER.info(f"The cleaned input is {inp}")

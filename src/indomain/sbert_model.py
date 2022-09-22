@@ -14,7 +14,6 @@ LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.INFO)
 
 current_path = os.path.dirname(os.path.abspath(__file__))
-LOGGER.info(current_path)
 model = SentenceTransformer("all-mpnet-base-v2")
 question_embedding = np.load(current_path + "/../../model_checkpoints/question_emb.npy")
 question_embedding_length = np.load(

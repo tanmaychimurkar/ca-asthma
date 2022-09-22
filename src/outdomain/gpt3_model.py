@@ -21,8 +21,6 @@ chat_log = "Context is Asthma."
 def ask(question):
     global chat_log
     prompt_text = f"{chat_log}{restart_sequence}: {question}{start_sequence}:"
-    # prompt_text = chat_log+question[0]
-    # print(f"prompt_text is: {prompt_text}")
     response = openai.Completion.create(
         model="text-davinci-002",
         prompt=prompt_text,
@@ -33,15 +31,12 @@ def ask(question):
         presence_penalty=0,
         stop=["\n"],
     )
-    print(response)
     story = response["choices"][0]["text"]
-    # tokens = response['usage']['total_tokens']
     return str(story)
 
 
 def ask_curie(question, chat_log=None):
     prompt_text = f"{chat_log}{restart_sequence}: {question}{start_sequence}:"
-    print(prompt_text)
     response = openai.Completion.create(
         engine="text-curie-001",
         prompt=prompt_text,
@@ -52,7 +47,6 @@ def ask_curie(question, chat_log=None):
         presence_penalty=0.3,
         stop=["\n"],
     )
-    print(response)
     story = response["choices"][0]["text"]
     return str(story)
 
@@ -96,7 +90,7 @@ def append_interaction_to_chat_log(question, answer):
 
 
 def answer_gpt3(incoming_msg, curie_flag=0):
-    # global chat_log
+
     if curie_flag == 0:
         answer = ask(incoming_msg)
     else:
@@ -106,5 +100,3 @@ def answer_gpt3(incoming_msg, curie_flag=0):
     return answer
 
 
-# answer_returned = answer_gpt3("Where is China?")
-# print(answer_returned)

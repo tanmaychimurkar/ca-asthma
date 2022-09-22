@@ -11,7 +11,7 @@ logging.basicConfig(
     stream=sys.stdout,
     encoding="utf-8",
 )
-# todo: remove root from the logger to disable logger messages from imported modules
+
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.INFO)
 

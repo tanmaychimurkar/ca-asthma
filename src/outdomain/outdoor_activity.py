@@ -55,7 +55,6 @@ def current_response():
 
     AQI = response["stations"][0]["AQI"]
     AQI_info = response["stations"][0]["aqiInfo"]["category"]
-    print(AQI, AQI_info)
 
     if AQI < 50:
         weather_response = f"Placeholder for good aqi by Juli."
