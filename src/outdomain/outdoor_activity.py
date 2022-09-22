@@ -54,7 +54,6 @@ def current_response():
     response = json.loads(full_response.text)
 
     AQI = response["stations"][0]["AQI"]
-    AQI_info = response["stations"][0]["aqiInfo"]["category"]
 
     if AQI < 50:
         weather_response = f"Placeholder for good aqi by Juli."
