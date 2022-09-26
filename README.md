@@ -20,7 +20,20 @@ Typical questions that the Converstaional Agent can answer are as follows:
     - Can I go swimming if I have Asthma?
     - What happens to my data that is collected?
 
-The questions can be passed as `raw json body` either via postman or any other alternatives.
+The questions can be passed as `raw json body` either via postman or any other alternatives. Below is the format of 
+the `json` body that has to be passed:
+
+API endpoint: `127.0.0.1:5000/api/v1/answer_davinci` (Note: The endpoint can be changed to use the `curie` model by
+modifying it to `answer_curie`)
+
+JSON body: 
+
+```
+{
+    "question": "Can I go outside to play if I don't have asthma?"
+}
+```
+
 
 Since there is no UI integrated at the moment as this is just the backend, 
 unfortunately sending `POST` requests is the only way to get responses from the 
