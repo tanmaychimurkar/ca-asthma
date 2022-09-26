@@ -62,6 +62,9 @@ which contains the following API keys as variables:
 
 `openai_api_key`: (key from here: https://beta.openai.com/signup)
 
+The `.env` file has to be created in the project root where the `docker-compose.yaml` file exists
+
+
 1) Run via `entrypoint.py`
 
 ```bash
