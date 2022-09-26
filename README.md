@@ -1,19 +1,19 @@
 
-# Project Title
+# Conversational Agent for Asthmatic Patients (Master Research Project)
 
-This project is demonstration of a general purpose Converstaional Agent, currently
+This project is demonstration of a general purpose Conversational Agent, currently
 domain constrained on Asthma. However, much of the methodologies followed in this
-project are extendible to different chronic diseases.
+project are extendable to different chronic diseases.
 
 The project makes use of Sentence Transformers and GPT3 to answer user queries 
 related to Asthma. Because of dependencies on different libraries like `PyTorch` that
 makes the environment of the project larger, a smaller `requirements.txt` file is
-attatched.
+attached.
 
 The project can be run via `docker compose up` without having to build the environment
 locally, as the environment will then be setup inside the `engine` container.
 
-Typical questions that the Converstaional Agent can answer are as follows:
+Typical questions that the Conversational Agent can answer are as follows:
 
     - I did not sleep well yesterday, and my Asthma has worsened. What should I do?
     - Is not a good time to go out for a walk?
@@ -37,7 +37,7 @@ JSON body:
 
 Since there is no UI integrated at the moment as this is just the backend, 
 unfortunately sending `POST` requests is the only way to get responses from the 
-Converstaional Agent.
+Conversational Agent.
 
 
 
