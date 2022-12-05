@@ -1,4 +1,9 @@
 
+# Project Title
+
+A brief description of what this project does and who it's for
+
+
 # Conversational Agent for Asthmatic Patients (Master Research Project)
 
 This project is demonstration of a general purpose Conversational Agent, currently
@@ -26,7 +31,7 @@ the `json` body that has to be passed:
 API endpoint: `127.0.0.1:5000/api/v1/answer_davinci` (Note: The endpoint can be changed to use the `curie` model by
 modifying it to `answer_curie`)
 
-JSON body: 
+JSON body:
 
 ```
 {
@@ -73,11 +78,29 @@ The `.env` file has to be created in the project root where the `docker-compose.
   python entrypoint.py
 ```
 
+Note: If running via entrypoint gives the error `ModuleError: No module named src`, then the following commands have 
+to be run from the project root (from inside the activated virtual environment):
+
+```bash
+
+    python -m pip install --upgrade pip
+    python -m pip install build
+    python -m build --sdist
+    python -m build --wheel
+    pip install -e .
+    python -m nltk.downloader all
+```
+
+After these steps, re-run the entrypoint and the code should then be working.
+
 2) Run via `docker`
 
 ```bash
   docker compose up --build
 ```
+
+Note: For running via docker, the default Flask port `5000` has to be open to accept connections, since the flask application 
+is being run from the custom docker image that we have uploaded to docker hub.
 
 Responses and the API execution time can be seen on mongo-express UI when run via `docker` at `http://localhost:8081/`
 
