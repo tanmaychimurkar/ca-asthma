@@ -31,6 +31,12 @@ the `json` body that has to be passed:
 API endpoint: `127.0.0.1:5000/api/v1/answer_davinci` (Note: The endpoint can be changed to use the `curie` model by
 modifying it to `answer_curie`)
 
+`NOTE`: It is advisable to keep the default port `5000` open for the application to run, as this port is set in a custom docker image that is created. If the port is occupied, you may open it with the following command:
+
+```bash
+sudo kill -9 `sudo lsof -t -i:5000`
+```
+
 JSON body:
 
 ```
