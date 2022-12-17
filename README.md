@@ -82,13 +82,12 @@ Note: If running via entrypoint gives the error `ModuleError: No module named sr
 to be run from the project root (from inside the activated virtual environment):
 
 ```bash
-
-    python -m pip install --upgrade pip
-    python -m pip install build
-    python -m build --sdist
-    python -m build --wheel
-    pip install -e .
-    python -m nltk.downloader all
+  python -m pip install --upgrade pip
+  python -m pip install build
+  python -m build --sdist
+  python -m build --wheel
+  pip install -e .
+  python -m nltk.downloader all
 ```
 
 After these steps, re-run the entrypoint and the code should then be working.
