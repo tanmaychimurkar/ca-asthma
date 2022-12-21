@@ -107,6 +107,6 @@ After these steps, re-run the entrypoint and the code should then be working.
 Note: For running via docker, the default Flask port `5000` has to be open to accept connections, since the flask application 
 is being run from the custom docker image that we have uploaded to docker hub.
 
-Responses and the API execution time can be seen on mongo-express UI when run via `docker` 
+Responses and the API execution time can be seen on mongo-express UI when run via `docker` at `http://localhost:8081/`
 
 
