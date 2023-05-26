@@ -3,7 +3,9 @@ import logging
 import string
 import time
 
-from flask import Flask, request, g as app_ctx
+from flask import Flask
+from flask import g as app_ctx
+from flask import request
 from flask_pymongo import PyMongo
 
 from src.indomain.question_classifier import user_input
