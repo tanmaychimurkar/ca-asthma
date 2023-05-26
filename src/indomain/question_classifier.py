@@ -2,10 +2,11 @@ import logging
 
 from nltk import pos_tag
 from nltk.stem import WordNetLemmatizer
+
 from src.indomain.sbert_model import genResults, getBertAnswer
 from src.outdomain.gpt3_model import answer_gpt3
 from src.outdomain.ner_pos import get_data, pos_tagging
-from src.outdomain.outdoor_activity import get_question_type, current_response
+from src.outdomain.outdoor_activity import current_response, get_question_type
 
 logging.basicConfig(
     level=logging.INFO,
@@ -35,22 +36,22 @@ def user_input(inp, model_flag=0):
 
     if score > 0.65:
         LOGGER.info(
-            f"The user query score is above the threshold of 0.65, so returning answer from the in-domain"
-            f"model for this user query"
+            f"The user query score is above the threshold of 0.65, so returning answer"
+            f" from the in-domainmodel for this user query"
         )
         LOGGER.debug(
-            f"The score of the closest question to the user query in the in-domain "
+            "The score of the closest question to the user query in the in-domain "
             f"dataset is {score}"
         )
         LOGGER.debug(
-            f"The closest matched question to the user query in the in-domain "
+            "The closest matched question to the user query in the in-domain "
             f"dataset is `{answer}`"
         )
         return answer
     else:
         LOGGER.info(
-            f"The user query score for the current question is below the threshold of 0.65, so returning answer"
-            f" from the out-domain model for this query"
+            f"The user query score for the current question is below the threshold of"
+            f" 0.65, so returning answer from the out-domain model for this query"
         )
 
         text = inp[0].split()
@@ -94,7 +95,8 @@ def user_input(inp, model_flag=0):
             LOGGER.debug(f"Count verb percent is {count_verb_percent}")
 
         LOGGER.debug(
-            f"Checking if the user query has the verb noun pair present in the master verb-noun list"
+            f"Checking if the user query has the verb noun pair present in the master"
+            f" verb-noun list"
         )
         if count_verb_percent >= 0.5 and count_noun_percent >= 0.5:
             temp_verb_list = []
@@ -126,7 +128,8 @@ def user_input(inp, model_flag=0):
 
         else:
             LOGGER.info(
-                f"The user query matches neither the in-domain nor the out-domain model criteria to fetch an"
-                f"answer. Exiting with the default template message."
+                f"The user query matches neither the in-domain nor the out-domain model"
+                f" criteria to fetch ananswer. Exiting with the default template"
+                f" message."
             )
             return "Hey there. Sorry, I can't quite answer that."
