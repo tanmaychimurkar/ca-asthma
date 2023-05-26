@@ -1,5 +1,6 @@
 import json
 import os
+
 import pandas as pd
 import requests
 from dotenv import load_dotenv
@@ -69,6 +70,6 @@ def current_response():
         weather_response = f"Unhealthy. Placeholder for Juli"
 
     return (
-        f"Hey, so I checked your health data, and {health_data_response}. Also, since you are going outside,"
-        f"I thought you should know {weather_response}"
+        f"Hey, so I checked your health data, and {health_data_response}. Also, since"
+        f" you are going outside,I thought you should know {weather_response}"
     )

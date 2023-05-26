@@ -90,7 +90,6 @@ def append_interaction_to_chat_log(question, answer):
 
 
 def answer_gpt3(incoming_msg, curie_flag=0):
-
     if curie_flag == 0:
         answer = ask(incoming_msg)
     else:

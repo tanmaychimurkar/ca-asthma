@@ -1,8 +1,8 @@
+import os
 import pickle
 
 import pandas as pd
 from nltk.stem import WordNetLemmatizer
-import os
 
 wordnet_lemmatizer = WordNetLemmatizer()
 
