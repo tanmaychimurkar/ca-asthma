@@ -1,5 +1,6 @@
 import logging
 import os
+
 import numpy as np
 import pandas as pd
 from sentence_transformers import SentenceTransformer
@@ -35,12 +36,12 @@ def genResults(questions, fn):
         columns=["question", "question_closest", "answer", "score"],
     )
     LOGGER.debug(
-        f"The score of the closest question to the user query in the in-domain "
-        f'dataset is {result_df["score"].values[0]}'
+        "The score of the closest question to the user query in the in-domain "
+        f"dataset is {result_df['score'].values[0]}"
     )
     LOGGER.debug(
-        f"The closest matched question to the user query in the in-domain "
-        f'dataset is `{result_df["question_closest"].values[0]}`'
+        "The closest matched question to the user query in the in-domain "
+        f"dataset is `{result_df['question_closest'].values[0]}`"
     )
     return result_df["answer"].values[0], result_df["score"].values[0]
 
