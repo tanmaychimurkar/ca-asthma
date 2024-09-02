@@ -1,6 +1,6 @@
 Flask==2.3.2
 Flask-PyMongo==2.3.0
-nltk==3.8.1
+nltk==3.9
 pandas==1.4.3
 requests==2.27.1
 python-dotenv==0.20.0
