@@ -4,7 +4,7 @@ nltk==3.9
 pandas==1.4.3
 requests==2.27.1
 python-dotenv==0.20.0
-transformers==4.36.0
+transformers==4.48.0
 sentence-transformers==2.2.2
 openai==0.20.0
 gunicorn==22.0.0
