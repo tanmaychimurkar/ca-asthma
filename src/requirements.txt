@@ -7,4 +7,4 @@ python-dotenv==0.20.0
 transformers==4.48.0
 sentence-transformers==2.2.2
 openai==0.20.0
-gunicorn==22.0.0
+gunicorn==23.0.0
